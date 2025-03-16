@@ -91,13 +91,13 @@ QBIT_NAME = environ.get('QBIT_NAME', 'qbittorrent-nox')
 FFMPEG_NAME = environ.get('FFMPEG_NAME', 'ffmpeg')
 
 # ============================ REQUIRED ================================
-if not (BOT_TOKEN := environ.get('BOT_TOKEN', '6499364659:AAHMmUxMWag28I9V_9YJBi8qaZWZ0VstGEk')):
+if not (BOT_TOKEN := environ.get('BOT_TOKEN', '')):
     LOGGER.error('BOT_TOKEN variable is missing! Exiting now')
     exit(1)
 
 bot_id = BOT_TOKEN.split(':', 1)[0]
 
-if DATABASE_URL := environ.get('DATABASE_URL', 'mongodb+srv://hello:hello@cluster0.vc2htx0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'):
+if DATABASE_URL := environ.get('DATABASE_URL', ''):
     if not DATABASE_URL.startswith('mongodb'):
         try:
             DATABASE_URL = b64decode(resub('ini|adalah|pesan|yang|sangat|rahasia', '', DATABASE_URL)).decode('utf-8')
@@ -139,9 +139,9 @@ if DATABASE_URL := environ.get('DATABASE_URL', 'mongodb+srv://hello:hello@cluste
             qbit_options = qbit_opt
             LOGGER.info('QBittorrent settings imported from database.')
         conn.close()
-        BOT_TOKEN = environ.get('BOT_TOKEN', '7588796776:AAFO4NRS0ptkUr8yMHUxdg8Kgy82B0ZcUlQ')
+        BOT_TOKEN = environ.get('BOT_TOKEN', '')
         bot_id = BOT_TOKEN.split(':', 1)[0]
-        if DATABASE_URL := environ.get('DATABASE_URL', 'mongodb+srv://hello:hello@cluster0.vc2htx0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'):
+        if DATABASE_URL := environ.get('DATABASE_URL', ''):
             if not DATABASE_URL.startswith('mongodb'):
                 try:
                     DATABASE_URL = b64decode(resub('ini|adalah|pesan|rahasia', '', DATABASE_URL)).decode('utf-8')
@@ -152,19 +152,19 @@ if DATABASE_URL := environ.get('DATABASE_URL', 'mongodb+srv://hello:hello@cluste
 else:
     config_dict = {}
 
-if OWNER_ID := environ.get('OWNER_ID', '1596559467'):
+if OWNER_ID := environ.get('OWNER_ID', ''):
     OWNER_ID = int(OWNER_ID)
 else:
     LOGGER.error('OWNER_ID variable is missing! Exiting now')
     exit(1)
 
-if TELEGRAM_API := environ.get('TELEGRAM_API', '4857766'):
+if TELEGRAM_API := environ.get('TELEGRAM_API', ''):
     TELEGRAM_API = int(TELEGRAM_API)
 else:
     LOGGER.error('TELEGRAM_API variable is missing! Exiting now')
     exit(1)
 
-if not (TELEGRAM_HASH := environ.get('TELEGRAM_HASH', '6c3c6facf5598a4b318e138f8c407028')):
+if not (TELEGRAM_HASH := environ.get('TELEGRAM_HASH', '')):
     LOGGER.error('TELEGRAM_HASH variable is missing! Exiting now')
     exit(1)
 
@@ -172,8 +172,8 @@ DOWNLOAD_DIR = environ.get('DOWNLOAD_DIR', '/usr/src/app/downloads/')
 if not DOWNLOAD_DIR.endswith('/'):
     DOWNLOAD_DIR += '/'
 
-GDRIVE_ID = environ.get('GDRIVE_ID', '0AOIjN1u1lhaiUk9PVA')
-CLOUD_LINK_FILTERS = environ.get('CLOUD_LINK_FILTERS', 'mypikpak.com')
+GDRIVE_ID = environ.get('GDRIVE_ID', '')
+CLOUD_LINK_FILTERS = environ.get('CLOUD_LINK_FILTERS', '')
 RCLONE_PATH = environ.get('RCLONE_PATH', 'MAIN:DL')
 RCLONE_FLAGS = environ.get('RCLONE_FLAGS', '')
 
@@ -224,7 +224,7 @@ INCOMPLETE_TASK_NOTIFIER = environ.get('INCOMPLETE_TASK_NOTIFIER', 'True').lower
 INCOMPLETE_AUTO_RESUME = environ.get('INCOMPLETE_AUTO_RESUME', 'True').lower() == 'true'
 USE_SERVICE_ACCOUNTS = environ.get('USE_SERVICE_ACCOUNTS', 'False').lower() == 'true'
 CMD_SUFFIX = environ.get('CMD_SUFFIX', '')
-DATABASE_URL = environ.get('DATABASE_URL', 'mongodb+srv://hello:hello@cluster0.vc2htx0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+DATABASE_URL = environ.get('DATABASE_URL', '')
 AUTO_THUMBNAIL = environ.get('AUTO_THUMBNAIL', 'True').lower() == 'true'
 PREMIUM_MODE = environ.get('PREMIUM_MODE', 'True').lower() == 'true'
 SESSION_TIMEOUT = int(environ.get('SESSION_TIMEOUT', 0))
@@ -269,20 +269,20 @@ RCLONE_TFSIMULATION = int(environ.get('RCLONE_TFSIMULATION', '8'))
             
 # ============================== LOGS ==================================
 ONCOMPLETE_LEECH_LOG = environ.get('ONCOMPLETE_LEECH_LOG', 'True').lower() == 'true'
-LEECH_LOG = environ.get('LEECH_LOG', '-1001963446260')
+LEECH_LOG = environ.get('LEECH_LOG', '')
 if LEECH_LOG:
     if LEECH_LOG.isdigit() or LEECH_LOG.startswith('-'):
         LEECH_LOG = int(LEECH_LOG)
 else:
     ENABLE_STREAM_LINK = False
 
-MIRROR_LOG = environ.get('MIRROR_LOG', '-1001963446260')
+MIRROR_LOG = environ.get('MIRROR_LOG', '')
 MIRROR_LOG = int(MIRROR_LOG) if MIRROR_LOG.isdigit() or MIRROR_LOG.startswith('-') else MIRROR_LOG
 
-OTHER_LOG = environ.get('OTHER_LOG', '-1001963446260')
+OTHER_LOG = environ.get('OTHER_LOG', '')
 OTHER_LOG = int(OTHER_LOG) if OTHER_LOG.isdigit() or OTHER_LOG.startswith('-') else OTHER_LOG
 
-LINK_LOG = environ.get('LINK_LOG', '-1001963446260')
+LINK_LOG = environ.get('LINK_LOG', '')
 LINK_LOG = int(LINK_LOG) if LINK_LOG.isdigit() or LINK_LOG.startswith('-') else LINK_LOG
 # ======================================================================
 
@@ -309,7 +309,7 @@ STATUS_LIMIT = int(STATUS_LIMIT) if STATUS_LIMIT else 5
 
 TORRENT_DIRECT_LIMIT = environ.get('TORRENT_DIRECT_LIMIT', '')
 TORRENT_DIRECT_LIMIT = float(TORRENT_DIRECT_LIMIT) if TORRENT_DIRECT_LIMIT else ''
-FSUB_CHANNEL_ID = "-1001963446260"
+FSUB_CHANNEL_ID = ""
 TOTAL_TASKS_LIMIT = environ.get('TOTAL_TASKS_LIMIT', '')
 TOTAL_TASKS_LIMIT = int(TOTAL_TASKS_LIMIT) if TOTAL_TASKS_LIMIT else ''
 
@@ -349,7 +349,7 @@ if GOFILE:
 # Auto Mute
 FORCE_SHORTEN = environ.get('FORCE_SHORTEN', 'False').lower() == 'true'
 AUTO_MUTE = environ.get('AUTO_MUTE', 'False').lower() == 'true'
-MUTE_CHAT_ID = "-1001963446260"
+MUTE_CHAT_ID = ""
 AUTO_MUTE_DURATION = int(environ.get('AUTO_MUTE_DURATION', 30))
 # Username
 FUSERNAME = environ.get('FUSERNAME', 'False').lower() == 'true'
@@ -447,16 +447,16 @@ SHARERPW_XSRF_TOKEN = environ.get('SHARERPW_XSRF_TOKEN', '')
 
 # =========================== UPSTREAM =================================
 UPSTREAM_REPO = environ.get('UPSTREAM_REPO', '')
-UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', 'master')
+UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', '')
 UPDATE_EVERYTHING = environ.get('UPDATE_EVERYTHING', 'False').lower() == 'true'
 # ======================================================================
 
 
 # ============================== UI ====================================
-AUTHOR_NAME = environ.get('AUTHOR_NAME', 'Maheshsirop')
-AUTHOR_URL = environ.get('AUTHOR_URL', 'https://t.me/maheshsirop')
+AUTHOR_NAME = environ.get('AUTHOR_NAME', '')
+AUTHOR_URL = environ.get('AUTHOR_URL', '')
 DRIVE_SEARCH_TITLE = environ.get('DRIVE_SEARCH_TITLE', 'Drive Search')
-GD_INFO = environ.get('GD_INFO', 'By @maheshsirop')
+GD_INFO = environ.get('GD_INFO', '')
 PROG_FINISH = environ.get('PROG_FINISH', '⬤')
 PROG_UNFINISH = environ.get('PROG_UNFINISH', '○')
 SOURCE_LINK_TITLE = environ.get('SOURCE_LINK_TITLE', 'Source Link')
