@@ -357,7 +357,7 @@ FUSERNAME = environ.get('FUSERNAME', 'False').lower() == 'true'
 FSUB = environ.get('FSUB', 'False').lower() == 'true'
 #FSUB_CHANNEL_ID = int(environ.get('FSUB_CHANNEL_ID', ''))
 FSUB_BUTTON_NAME = environ.get('FSUB_BUTTON_NAME', 'Join Channel')
-CHANNEL_USERNAME = environ.get('CHANNEL_USERNAME', 'hexafreinds')
+CHANNEL_USERNAME = environ.get('CHANNEL_USERNAME', 'starzleech')
 # ======================================================================
 
 
