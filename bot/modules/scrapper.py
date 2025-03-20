@@ -192,7 +192,7 @@ async def tamilmv(url):
         
 {no}. <code>{filename}</code>
 ┖ <b>Links :</b> <a href="https://t.me/share/url?url={m['href'].split('&')[0]}"><b>Magnet </b>🧲</a>  | <a href="{t['href']}"><b>Torrent 🌐</b></a>"""
-       return parse_data
+       return parse_data()
 
     async def txt_file(self):
         self._event_handler()
